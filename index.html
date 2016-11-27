@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta name="description" content="A polyfill enabling momentum scrolling (aka. inertial scrolling) on non-touch devices. Also provides a momentum function, which can be called manually.">
 	<meta name="keywords" content="JavaScript, JS, Momentum, Inertial, Scrolling, Touch, Overflow"/>
+	<meta name="author" content="Nicolas MARTIN (gitnicolas)">
 	<meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -24,6 +26,16 @@
 
 		div.shadow-bottom {
 			box-shadow: 0 2px 3px rgba(0, 0, 0, 0.25);
+		}
+
+		div.ellipsis {
+			overflow-x: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+		}
+
+		div.transition {
+			transition: all 0.15s ease-in-out;
 		}
 
 		div.page {
@@ -54,6 +66,45 @@
 			margin: 16px;
 			text-align: justify;
 			color: #424242;
+		}
+
+		div.actions {
+			flex: 0 0 auto;
+			margin: 16px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		div.button {
+			flex: 0 0 auto;
+			margin: 0 8px;
+			border-radius: 2px;
+			padding: 16px 32px;
+			background-color: white;
+			color: #424242;
+			cursor: pointer;
+		}
+
+		div.button:first-child {
+			background-color: #0091ea;
+			color: white;
+		}
+
+		div.button:hover {
+			background-color: #f5f5f5;
+		}
+
+		div.button:active {
+			background-color: #e0e0e0;
+		}
+
+		div.button:first-child:hover {
+			background-color: #00b0ff;
+		}
+
+		div.button:first-child:active {
+			background-color: #80d8ff;
 		}
 
 		div.columns {
@@ -104,6 +155,16 @@
 			width: 300%;
 			text-align: justify;
 		}
+
+		div.footer {
+			flex: 0 0 auto;
+			margin: 16px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-size: 10px;
+			color: #424242;
+		}
 	</style>
 	<script src="src/momentum/momentum.js"></script>
 </head>
@@ -111,12 +172,17 @@
 <div class="page">
 	<div class="title">Momentum.js</div>
 	<div class="description">
-		A polyfill enabling momentum scrolling (aka. inertial scrolling) on non-touch devices.<br>
-		Also provides a momentum function, which can be called manually.
+		A polyfill enabling momentum scrolling (aka. inertial scrolling) on non-touch devices. Also provides a momentum function, which can be called manually.<br>
+		Lightweight, efficient, framework agnostic & independent, plain JavaScript library. For the usage details, see the
+		<a href="https://github.com/gitnicolas/momentum">API</a> on GitHub.
+	</div>
+	<div class="actions">
+		<div class="button button-main shadow-bottom transition" onclick="location.href='https://github.com/gitnicolas/momentum/raw/master/src/momentum/momentum.min.js'">Download</div>
+		<div class="button shadow-bottom transition" onclick="location.href='https://github.com/gitnicolas/momentum'">View on GitHub</div>
 	</div>
 	<div class="columns">
 		<div class="card shadow-bottom">
-			<div class="card-header">Vertical Scrolling</div>
+			<div class="card-header ellipsis">Vertical Scrolling</div>
 			<div class="card-body">
 				<div class="content-vertical overflow-scrolling-touch">
 					Hac ex causa conlaticia stipe Valerius humatur ille Publicola et subsidiis amicorum mariti inops cum liberis uxor alitur Reguli et dotatur ex aerario filia Scipionis, cum nobilitas florem adultae virginis diuturnum absentia pauperis erubesceret patris.<br><br>
@@ -133,7 +199,7 @@
 			</div>
 		</div>
 		<div class="card shadow-bottom">
-			<div class="card-header">Horizontal Scrolling</div>
+			<div class="card-header ellipsis">Horizontal Scrolling</div>
 			<div class="card-body">
 				<div class="content-horizontal overflow-scrolling-touch">
 					Hac ex causa conlaticia stipe Valerius humatur ille Publicola et subsidiis amicorum mariti inops cum liberis uxor alitur Reguli et dotatur ex aerario filia Scipionis, cum nobilitas florem adultae virginis diuturnum absentia pauperis erubesceret patris.<br><br>
@@ -150,7 +216,7 @@
 			</div>
 		</div>
 		<div class="card shadow-bottom">
-			<div class="card-header">Bidirectional Scrolling</div>
+			<div class="card-header ellipsis">Bidirectional Scrolling</div>
 			<div class="card-body">
 				<div class="overflow-scrolling-touch">
 					<div class="content">
@@ -178,6 +244,9 @@
 				</div>
 			</div>
 		</div>
+	</div>
+	<div class="footer">
+		<div>Created by <a href="https://github.com/gitnicolas">Nicolas MARTIN (gitnicolas)</a>.</div>
 	</div>
 </div>
 </body>
